@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model_env": "MODEL_NAME",
+  "base_url_env": "MODEL_BASE_URL",
+  "api_key_env": "MODEL_API_KEY",
+  "max_tokens": 32768,
+  "temperature": 0,
+  "timeout": 180
+}

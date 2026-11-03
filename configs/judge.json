@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model_env": "JUDGE_MODEL_NAME",
+  "base_url_env": "JUDGE_BASE_URL",
+  "api_key_env": "JUDGE_API_KEY",
+  "max_tokens": 16384,
+  "temperature": 0,
+  "timeout": 180
+}

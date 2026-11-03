@@ -56,6 +56,7 @@ This is the official benchmark repository for **VisSearch-Bench: Evaluating Long
 - [x] English benchmark released on [Hugging Face](https://huggingface.co/datasets/antins-labs/VisSearch-Bench-v1).
 - [x] Reference answers, evidence-linked reference solutions, and task-specific grading prompts included.
 - [x] Main results for Direct Answer, ReAct, and DeerFlow documented below.
+- [x] Direct and ReAct inference code, plus Accuracy and Process Score evaluation released.
 
 ---
 
@@ -190,6 +191,44 @@ Follow the output format specified in that prompt and read its final `score`. Pr
 | **DeerFlow** | An additional agent framework evaluated with three selected backbones. |
 
 Each system is evaluated once per task from a fresh context, and results are reported as **Pass@1**. The paper’s ReAct setup allows up to **30 search rounds**, **60 evidence-tool calls**, and **20 images per task**, including initial images, retrieved images, and crops. These are the ReAct limits, not a shared budget asserted for every framework.
+
+## Inference and Evaluation Code
+
+Direct inference, five-tool ReAct inference, and shared rubric-based evaluation are available in [`vissearch_bench/`](vissearch_bench/). Use Python 3.10+ on Linux/macOS, or WSL on Windows.
+
+```bash
+git clone https://github.com/antins-labs/VisSearch-Bench-v1.git
+cd VisSearch-Bench-v1
+python -m venv .venv
+source .venv/bin/activate
+pip install -e .
+```
+
+Configure your own model with `MODEL_NAME`, `MODEL_BASE_URL`, and `MODEL_API_KEY`. Example profiles are in [`configs/`](configs/); credentials are read from environment variables.
+
+```bash
+# Offline input check; downloads the public dataset on first use.
+python -m vissearch_bench.inference --method direct \
+  --config configs/openai.json --limit 2 --dry-run
+
+# Direct Answer: question + initial images, without external tools.
+python -m vissearch_bench.inference --method direct \
+  --config configs/openai.json --output outputs/direct
+
+# ReAct: also set SERPER_API_KEY and SERPAPI_KEY.
+python -m vissearch_bench.inference --method react \
+  --config configs/openai.json --output outputs/react
+
+# Set JUDGE_MODEL_NAME, JUDGE_BASE_URL, and JUDGE_API_KEY first.
+python -m vissearch_bench.evaluate --config configs/judge.json \
+  --predictions outputs/react/predictions.jsonl --output outputs/react-evaluation
+```
+
+The commands use the pinned English Hugging Face release by default. `--limit` and `--ids` select a smaller run; `--resume` continues saved work. Evaluation reads the per-task `accuracy_prompt` and `Process Score` rubrics; use `--metric accuracy` or `--metric process` to run either metric separately.
+
+See **[the usage guide](docs/usage.md)** for provider setup, local data, tool budgets, outputs, failure accounting, and offline tests. The public wrappers reuse the experiment inference/scoring implementations; generic example profiles do not reproduce every model-specific setting or historical retry policy in the paper.
+
+---
 
 ## Main Results
 
