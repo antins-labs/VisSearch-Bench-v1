@@ -19,15 +19,13 @@
 </p>
 
 <p align="center">
-  <a href="#" title="arXiv link coming soon"><img src="https://img.shields.io/badge/arXiv-Coming%20soon-b31b1b?logo=arxiv&amp;logoColor=white" alt="arXiv — Coming soon"></a>
-  <a href="#" title="Project page link coming soon"><img src="https://img.shields.io/badge/Project%20Page-Coming%20soon-4b8bbe" alt="Project Page — Coming soon"></a>
+  <a href="https://arxiv.org/abs/2611.04894"><img src="https://img.shields.io/badge/arXiv-2611.04894-b31b1b?logo=arxiv&amp;logoColor=white" alt="arXiv:2611.04894"></a>
+  <a href="https://dingwu1021.github.io/VisSearch-Bench/"><img src="https://img.shields.io/badge/Project%20Page-Website-4b8bbe" alt="Project Page"></a>
   <a href="https://huggingface.co/datasets/antins-labs/VisSearch-Bench-v1"><img src="https://img.shields.io/badge/Hugging%20Face-Dataset-FFD21E?logo=huggingface&amp;logoColor=FFD21E" alt="Hugging Face Dataset"></a>
   <img src="https://img.shields.io/badge/Tasks-204-7C63D8" alt="204 tasks">
   <img src="https://img.shields.io/badge/Search%20Families-5-8F70D6" alt="5 search families">
   <img src="https://img.shields.io/badge/Domains-7-576EB8" alt="7 primary domains">
 </p>
-
-<!-- Placeholder links: replace the two href="#" values above with the public arXiv and project-page URLs when available, and update the Coming soon badge labels. -->
 
 <p align="center">
   <a href="#overview">Overview</a> ·
@@ -299,7 +297,7 @@ VisSearch-Bench follows a human-led construction process with program-assisted v
 
 ## Citation
 
-If you use VisSearch-Bench in your research, please cite the manuscript:
+If you use VisSearch-Bench in your research, please cite our paper:
 
 ```bibtex
 @misc{wu2026vissearchbench,
@@ -311,8 +309,10 @@ If you use VisSearch-Bench in your research, please cite the manuscript:
             and Zhang, Jin and Xu, Xingzhong and Yang, Kai
             and Wang, Haoqian},
   year = {2026},
-  howpublished = {Manuscript},
-  url = {https://huggingface.co/datasets/antins-labs/VisSearch-Bench-v1}
+  eprint = {2611.04894},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CV},
+  url = {https://arxiv.org/abs/2611.04894}
 }
 ```
 
